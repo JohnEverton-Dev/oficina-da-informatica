@@ -1,11 +1,9 @@
 package com.alvestech.oficinadainformatica.cliente.domain;
 
 import com.alvestech.oficinadainformatica.cliente.application.api.ClienteRequest;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +22,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID idCliente;
+    @NotBlank(message = "Campo Obrigatório!")
     private String nomeCompleto;
+    @NotBlank(message = "Campo Obrigatório!")
     @CPF
+    @Column(unique = true)
     private String cpf;
     private LocalDate dataNascimento;
     private String celular;

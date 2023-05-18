@@ -22,9 +22,10 @@ public class ClienteInfraRepository implements ClienteRepository {
             Cliente clienteCriado = clienteSpringDataJPARepository.save(cliente);
             log.info("[finash] ClienteInfraRepository - saveCliente");
             return clienteCriado;
-        } catch (DataIntegrityViolationException e) {
+        }catch (DataIntegrityViolationException e) {
             throw APIException.build(HttpStatus.BAD_REQUEST,
-                    "Cliente já cadastrado! CPF: " + cliente.getCpf());
+                    "Cliente já cadastrado!");
         }
     }
+
 }
