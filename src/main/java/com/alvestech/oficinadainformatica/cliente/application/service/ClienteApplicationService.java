@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -18,7 +20,14 @@ public class ClienteApplicationService implements ClienteService {
     public ClienteResponse saveCliente(ClienteRequest clienteRequest) {
         log.info("[start] ClienteApplicationService - saveCliente");
         Cliente cliente = clienteRepository.saveCliente(new Cliente(clienteRequest));
-        log.info("[finash] ClienteApplicationService - saveCliente");
+        log.info("[finish] ClienteApplicationService - saveCliente");
+        return new ClienteResponse(cliente);
+    }
+    @Override
+    public ClienteResponse findClienteById(UUID idCliente) {
+        log.info("[start] ClienteApplicationService - saveCliente");
+        Cliente cliente = clienteRepository.findClienteById(idCliente);
+        log.info("[finish] ClienteApplicationService - saveCliente");
         return new ClienteResponse(cliente);
     }
 }

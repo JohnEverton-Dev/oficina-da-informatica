@@ -9,6 +9,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -26,6 +29,15 @@ public class ClienteInfraRepository implements ClienteRepository {
             throw APIException.build(HttpStatus.BAD_REQUEST,
                     "Cliente já cadastrado!");
         }
+    }
+    @Override
+    public Cliente findClienteById(UUID idCliente) {
+        log.info("[start] ClienteInfraRepository - findClienteById");
+        Optional<Cliente> optionalCliente = clienteSpringDataJPARepository.findById(idCliente);
+        Cliente cliente = optionalCliente.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,
+                "Cliente não encontrado!"));
+        log.info("[finish] ClienteInfraRepository - findClienteById");
+        return cliente;
     }
 
 }
