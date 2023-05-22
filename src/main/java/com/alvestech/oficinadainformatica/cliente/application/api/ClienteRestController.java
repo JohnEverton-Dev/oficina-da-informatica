@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,6 +27,13 @@ public class ClienteRestController implements ClienteAPI {
         ClienteResponse findCliente = clienteService.findClienteById(idCliente);
         log.info("[finish] ClienteRestController - findClienteById");
         return findCliente;
+    }
+    @Override
+    public List<ClienteListResponse> findAllClientes() {
+        log.info("[start] ClienteRestController - findAllClientes");
+        List<ClienteListResponse> clienteList = clienteService.findAllClientes();
+        log.info("[finish] ClienteRestController - findAllClientes");
+        return clienteList;
     }
 
 }

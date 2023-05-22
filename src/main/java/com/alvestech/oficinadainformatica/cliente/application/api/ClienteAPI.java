@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Tag(name = "Cliente", description = "Cliente APIs")
@@ -18,4 +19,9 @@ public interface ClienteAPI {
     @GetMapping(value = "/{idCliente}")
     @ResponseStatus(code = HttpStatus.OK)
     ClienteResponse findClienteById(@PathVariable UUID idCliente);
+
+    @GetMapping(value = "/findAllClientes")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ClienteListResponse> findAllClientes();
+
 }
