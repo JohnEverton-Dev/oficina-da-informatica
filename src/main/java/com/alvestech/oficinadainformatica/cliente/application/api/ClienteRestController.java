@@ -41,5 +41,11 @@ public class ClienteRestController implements ClienteAPI {
         clienteService.deleteCliente(idCliente);
         log.info("[finish] ClienteRestController - deleteCliente");
     }
-
+    @Override
+    public void updateCliente(UUID idCliente, EditaClienteRequest editaClienteRequest) {
+        log.info("[start] ClienteRestController - updateCliente");
+        clienteService.updateCliente(idCliente, editaClienteRequest);
+        log.info("[idCliente] {}", idCliente);
+        log.info("[finish] ClienteRestController - updateCliente");
+    }
 }

@@ -1,6 +1,7 @@
 package com.alvestech.oficinadainformatica.cliente.domain;
 
 import com.alvestech.oficinadainformatica.cliente.application.api.ClienteRequest;
+import com.alvestech.oficinadainformatica.cliente.application.api.EditaClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -45,5 +46,14 @@ public class Cliente {
         this.endereco = clienteRequest.getEndereco();
         this.numero = clienteRequest.getNumero();
         this.bairro = clienteRequest.getBairro();
+    }
+    public void update(EditaClienteRequest editaClienteRequest) {
+        this.nomeCompleto = editaClienteRequest.getNomeCompleto();
+        this.dataNascimento = editaClienteRequest.getDataNascimento();
+        this.celular = editaClienteRequest.getCelular();
+        this.email = editaClienteRequest.getEmail();
+        this.endereco = editaClienteRequest.getEndereco();
+        this.numero = editaClienteRequest.getNumero();
+        this.bairro = editaClienteRequest.getBairro();
     }
 }
