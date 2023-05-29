@@ -1,18 +1,18 @@
 package com.alvestech.oficinadainformatica.cliente.application.api;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
+import lombok.Value;
 
 import java.time.LocalDate;
 
-@Getter
+@Value
 public class EditaClienteRequest {
-    @NotNull(message = "Campo Obrigatório!")
-   private String nomeCompleto;
-   private LocalDate dataNascimento;
-   private String celular;
-   private String email;
-   private String endereco;
-   private String numero;
-   private String bairro;
+   @NotNull(message = "Campo Obrigatório!")
+   String nomeCompleto;
+   LocalDate dataNascimento;
+   String celular;
+   String email;
+   String endereco;
+   String numero;
+   String bairro;
 }

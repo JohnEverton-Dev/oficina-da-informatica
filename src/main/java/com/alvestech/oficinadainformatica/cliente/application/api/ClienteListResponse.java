@@ -13,7 +13,7 @@ public class ClienteListResponse {
     String nomeCompleto;
     String cpf;
 
-    public static List<ClienteListResponse> converte(List<Cliente>clienteList) {
+    public static List<ClienteListResponse> converte(List<Cliente> clienteList) {
         return clienteList.stream()
                 .map(ClienteListResponse::new)
                 .collect((Collectors.toList()));

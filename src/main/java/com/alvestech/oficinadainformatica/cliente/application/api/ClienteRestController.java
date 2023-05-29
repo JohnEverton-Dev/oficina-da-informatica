@@ -24,21 +24,21 @@ public class ClienteRestController implements ClienteAPI {
     @Override
     public ClienteResponse findClienteById(UUID idCliente) {
         log.info("[start] ClienteRestController - findClienteById");
-        ClienteResponse findCliente = clienteService.findClienteById(idCliente);
+        ClienteResponse findCliente = clienteService.findFuncionarioById(idCliente);
         log.info("[finish] ClienteRestController - findClienteById");
         return findCliente;
     }
     @Override
     public List<ClienteListResponse> findAllClientes() {
         log.info("[start] ClienteRestController - findAllClientes");
-        List<ClienteListResponse> clienteList = clienteService.findAllClientes();
+        List<ClienteListResponse> clienteList = clienteService.findAllFuncionario();
         log.info("[finish] ClienteRestController - findAllClientes");
         return clienteList;
     }
     @Override
     public void deleteCliente(UUID idCliente) {
         log.info("[start] ClienteRestController - deleteCliente");
-        clienteService.deleteCliente(idCliente);
+        clienteService.deleteFuncionario(idCliente);
         log.info("[finish] ClienteRestController - deleteCliente");
     }
     @Override

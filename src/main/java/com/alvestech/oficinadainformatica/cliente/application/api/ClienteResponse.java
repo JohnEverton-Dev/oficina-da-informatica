@@ -3,7 +3,6 @@ package com.alvestech.oficinadainformatica.cliente.application.api;
 import com.alvestech.oficinadainformatica.cliente.domain.Cliente;
 import lombok.Value;
 
-import java.time.LocalDate;
 import java.util.UUID;
 @Value
 public class ClienteResponse {

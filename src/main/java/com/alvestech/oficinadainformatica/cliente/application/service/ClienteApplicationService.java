@@ -27,21 +27,21 @@ public class ClienteApplicationService implements ClienteService {
         return new ClienteResponse(cliente);
     }
     @Override
-    public ClienteResponse findClienteById(UUID idCliente) {
+    public ClienteResponse findFuncionarioById(UUID idCliente) {
         log.info("[start] ClienteApplicationService - findClienteById");
         Cliente cliente = clienteRepository.findClienteById(idCliente);
         log.info("[finish] ClienteApplicationService - findClienteById");
         return new ClienteResponse(cliente);
     }
     @Override
-    public List<ClienteListResponse> findAllClientes() {
+    public List<ClienteListResponse> findAllFuncionario() {
         log.info("[start] ClienteApplicationService - findAllClientes");
         List<Cliente> clienteList = clienteRepository.findAllClientes();
         log.info("[finash] ClienteApplicationService - findAllClientes");
         return ClienteListResponse.converte(clienteList);
     }
     @Override
-    public void deleteCliente(UUID idCliente) {
+    public void deleteFuncionario(UUID idCliente) {
         log.info("[start] ClienteApplicationService - deleteCliente");
         Cliente cliente = clienteRepository.findClienteById(idCliente);
         clienteRepository.deleteCliente(cliente.getIdCliente());

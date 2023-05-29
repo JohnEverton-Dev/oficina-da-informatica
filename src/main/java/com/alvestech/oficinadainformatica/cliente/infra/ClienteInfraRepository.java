@@ -1,6 +1,5 @@
 package com.alvestech.oficinadainformatica.cliente.infra;
 
-import com.alvestech.oficinadainformatica.cliente.application.api.ClienteListResponse;
 import com.alvestech.oficinadainformatica.cliente.application.repository.ClienteRepository;
 import com.alvestech.oficinadainformatica.cliente.domain.Cliente;
 import com.alvestech.oficinadainformatica.handler.APIException;
