@@ -5,6 +5,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.UUID;
+
 @Tag(name = "Funcionário", description = "Funcionário APIs")
 @RequestMapping("/v1/Funcionario")
 public interface FuncionarioAPI {
@@ -13,7 +16,11 @@ public interface FuncionarioAPI {
     @ResponseStatus(code = HttpStatus.CREATED)
     FuncionarioResponse saveFuncionario (@Valid @RequestBody FuncionarioRequest funcionarioRequest);
 
-    @GetMapping
+    @GetMapping(value = "/{idFuncionario}")
     @ResponseStatus(code = HttpStatus.OK)
-    FuncionarioResponse
+    FuncionarioResponse findFuncionarioById (@PathVariable UUID idFuncionario);
+
+    @GetMapping(value = "/allFuncionarios")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<FuncionarioResponse> findAllFuncionario();
 }

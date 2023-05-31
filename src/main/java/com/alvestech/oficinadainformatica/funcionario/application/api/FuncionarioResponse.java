@@ -4,7 +4,9 @@ import com.alvestech.oficinadainformatica.funcionario.domain.Cargo;
 import com.alvestech.oficinadainformatica.funcionario.domain.Funcionario;
 import lombok.Value;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Value
 public class FuncionarioResponse {
@@ -21,5 +23,10 @@ public class FuncionarioResponse {
         this.cpf = funcionario.getCpf();
         this.celular = funcionario.getCelular();
         this.cargo = funcionario.getCargo();
+    }
+    public static List<FuncionarioResponse> converte(List<Funcionario> funcionarios) {
+        return funcionarios.stream()
+                .map(FuncionarioResponse::new)
+                .collect((Collectors.toList()));
     }
 }

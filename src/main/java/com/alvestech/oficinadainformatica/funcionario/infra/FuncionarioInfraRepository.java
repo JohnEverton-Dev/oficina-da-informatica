@@ -9,6 +9,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -25,6 +29,21 @@ public class FuncionarioInfraRepository implements FuncionarioRepository {
         }catch (DataIntegrityViolationException e){
             throw APIException.build(HttpStatus.BAD_REQUEST, "Funcionário já cadastrado!");
         }
-
+    }
+    @Override
+    public Funcionario findFuncionarioById(UUID idFuncionario) {
+        log.info("[start] FuncionarioInfraRepository - findFuncionarioById");
+        Optional<Funcionario> optionalFuncionario = funcionarioSpringDataJPARepository.findById(idFuncionario);
+        Funcionario funcionario = optionalFuncionario.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,
+                "Funcionario não encontrado!"));
+        log.info("[finish] FuncionarioInfraRepository - findFuncionarioById");
+        return funcionario;
+    }
+    @Override
+    public List<Funcionario> findAllFuncionarios() {
+        log.info("[start] FuncionarioInfraRepository - findAllFuncionarios");
+        List<Funcionario> allFuncionarios = funcionarioSpringDataJPARepository.findAll();
+        log.info("[finish] FuncionarioInfraRepository - findAllFuncionarios");
+        return allFuncionarios;
     }
 }

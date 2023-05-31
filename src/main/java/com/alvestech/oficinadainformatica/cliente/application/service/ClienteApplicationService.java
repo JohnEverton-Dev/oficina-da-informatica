@@ -27,14 +27,14 @@ public class ClienteApplicationService implements ClienteService {
         return new ClienteResponse(cliente);
     }
     @Override
-    public ClienteResponse findFuncionarioById(UUID idCliente) {
+    public ClienteResponse findClienteById(UUID idCliente) {
         log.info("[start] ClienteApplicationService - findClienteById");
         Cliente cliente = clienteRepository.findClienteById(idCliente);
         log.info("[finish] ClienteApplicationService - findClienteById");
         return new ClienteResponse(cliente);
     }
     @Override
-    public List<ClienteListResponse> findAllFuncionario() {
+    public List<ClienteListResponse> findAllClientes() {
         log.info("[start] ClienteApplicationService - findAllClientes");
         List<Cliente> clienteList = clienteRepository.findAllClientes();
         log.info("[finash] ClienteApplicationService - findAllClientes");

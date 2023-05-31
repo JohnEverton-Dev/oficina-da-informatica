@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequiredArgsConstructor
 @Log4j2
@@ -17,5 +20,19 @@ public class FuncionarioRestController implements FuncionarioAPI {
         FuncionarioResponse funcionarioResponse = funcionarioService.saveFuncionario(funcionarioRequest);
         log.info("[finish] FuncionarioRestController - saveFuncionario");
         return funcionarioResponse;
+    }
+    @Override
+    public FuncionarioResponse findFuncionarioById(UUID idFuncionario) {
+        log.info("[start] FuncionarioRestController - findFuncionarioById");
+        FuncionarioResponse funcionarioResponse = funcionarioService.findFuncionarioById(idFuncionario);
+        log.info("[finish] FuncionarioRestController - findFuncionarioById");
+        return funcionarioResponse;
+    }
+    @Override
+    public List<FuncionarioResponse> findAllFuncionario() {
+        log.info("[start] FuncionarioRestController - findAllFuncionario");
+        List<FuncionarioResponse> listFuncionarios = funcionarioService.findAllFuncionarios();
+        log.info("[finish] FuncionarioRestController - findAllFuncionario");
+        return listFuncionarios;
     }
 }

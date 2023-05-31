@@ -10,8 +10,8 @@ import java.util.UUID;
 
 public interface ClienteService {
     ClienteResponse saveCliente(ClienteRequest clienteRequest);
-    ClienteResponse findFuncionarioById(UUID idCliente);
-    List<ClienteListResponse> findAllFuncionario();
+    ClienteResponse findClienteById(UUID idCliente);
+    List<ClienteListResponse> findAllClientes();
     void deleteFuncionario(UUID idCliente);
     void updateCliente(UUID idCliente, EditaClienteRequest editaClienteRequest);
 }
