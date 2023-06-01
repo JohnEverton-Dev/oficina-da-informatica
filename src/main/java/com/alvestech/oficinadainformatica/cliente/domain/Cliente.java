@@ -49,7 +49,6 @@ public class Cliente {
     }
     public void update(EditaClienteRequest editaClienteRequest) {
         this.nomeCompleto = editaClienteRequest.getNomeCompleto();
-        this.dataNascimento = editaClienteRequest.getDataNascimento();
         this.celular = editaClienteRequest.getCelular();
         this.email = editaClienteRequest.getEmail();
         this.endereco = editaClienteRequest.getEndereco();

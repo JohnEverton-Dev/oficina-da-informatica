@@ -1,6 +1,5 @@
 package com.alvestech.oficinadainformatica.cliente.application.repository;
 
-import com.alvestech.oficinadainformatica.cliente.application.api.ClienteListResponse;
 import com.alvestech.oficinadainformatica.cliente.domain.Cliente;
 
 import java.util.List;
