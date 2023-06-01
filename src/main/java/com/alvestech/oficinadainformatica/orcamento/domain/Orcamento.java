@@ -34,5 +34,5 @@ public class Orcamento {
     @JsonIgnore
     private Cliente cliente;
 
-    
+
 }
