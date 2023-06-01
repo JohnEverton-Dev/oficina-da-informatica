@@ -1,5 +1,6 @@
 package com.alvestech.oficinadainformatica.funcionario.domain;
 
+import com.alvestech.oficinadainformatica.funcionario.application.api.EditaFuncionarioRequest;
 import com.alvestech.oficinadainformatica.funcionario.application.api.FuncionarioRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -50,5 +51,15 @@ public class Funcionario {
         this.numero = funcionarioRequest.getNumero();
         this.bairro = funcionarioRequest.getBairro();
         this.cidade = funcionarioRequest.getCidade();
+    }
+
+    public void update(EditaFuncionarioRequest editaFuncionarioRequest) {
+        this.nomeCompleto = editaFuncionarioRequest.getNomeCompleto();
+        this.celular = editaFuncionarioRequest.getCelular();
+        this.email = editaFuncionarioRequest.getEmail();
+        this.endereco = editaFuncionarioRequest.getEndereco();
+        this.numero = editaFuncionarioRequest.getNumero();
+        this.bairro = editaFuncionarioRequest.getBairro();
+        this.cidade = editaFuncionarioRequest.getCidade();
     }
 }

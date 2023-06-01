@@ -23,4 +23,12 @@ public interface FuncionarioAPI {
     @GetMapping(value = "/allFuncionarios")
     @ResponseStatus(code = HttpStatus.OK)
     List<FuncionarioResponse> findAllFuncionario();
+
+    @DeleteMapping(value = "/{idFuncionario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteFuncionario (@PathVariable UUID idFuncionario);
+
+    @PatchMapping(value = "/update/{idFuncionario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void updateFuncionario (@PathVariable UUID idFuncionario, @Valid @RequestBody EditaFuncionarioRequest editaFuncionarioRequest);
 }

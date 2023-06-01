@@ -35,4 +35,17 @@ public class FuncionarioRestController implements FuncionarioAPI {
         log.info("[finish] FuncionarioRestController - findAllFuncionario");
         return listFuncionarios;
     }
+    @Override
+    public void deleteFuncionario(UUID idFuncionario) {
+        log.info("[start] FuncionarioRestController - deleteFuncionario");
+        funcionarioService.deleteFuncionario(idFuncionario);
+        log.info("[finish] FuncionarioRestController - deleteFuncionario");
+    }
+    @Override
+    public void updateFuncionario(UUID idFuncionario, EditaFuncionarioRequest editaFuncionarioRequest) {
+        log.info("[start] FuncionarioRestController - updateFuncionario");
+        funcionarioService.updateFuncionario(idFuncionario, editaFuncionarioRequest);
+        log.info("[idFuncionario] {}", idFuncionario);
+        log.info("[finsh] FuncionarioRestController - updateFuncionario");
+    }
 }

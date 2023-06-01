@@ -1,5 +1,6 @@
 package com.alvestech.oficinadainformatica.funcionario.application.service;
 
+import com.alvestech.oficinadainformatica.funcionario.application.api.EditaFuncionarioRequest;
 import com.alvestech.oficinadainformatica.funcionario.application.api.FuncionarioRequest;
 import com.alvestech.oficinadainformatica.funcionario.application.api.FuncionarioResponse;
 import com.alvestech.oficinadainformatica.funcionario.application.repository.FuncionarioRepository;
@@ -37,5 +38,20 @@ public class FuncionarioApplicationService implements FuncionarioService {
         List<Funcionario> funcionarios = funcionarioRepository.findAllFuncionarios();
         log.info("[finish] FuncionarioApplicationService - findAllFuncionarios");
         return FuncionarioResponse.converte(funcionarios);
+    }
+    @Override
+    public void deleteFuncionario(UUID idFuncionario) {
+        log.info("[start] FuncionarioApplicationService - deleteFuncionario");
+        Funcionario funcionario = funcionarioRepository.findFuncionarioById(idFuncionario);
+        funcionarioRepository.deleteFuncionario(funcionario.getIdFuncionario());
+        log.info("[finish] FuncionarioApplicationService - deleteFuncionario");
+    }
+    @Override
+    public void updateFuncionario(UUID idFuncionario, EditaFuncionarioRequest editaFuncionarioRequest) {
+        log.info("[start] FuncionarioApplicationService - updateFuncionario");
+        Funcionario funcionario = funcionarioRepository.findFuncionarioById(idFuncionario);
+        funcionario.update(editaFuncionarioRequest);
+        funcionarioRepository.saveFuncionario(funcionario);
+        log.info("[finish] FuncionarioApplicationService - updateFuncionario");
     }
 }
