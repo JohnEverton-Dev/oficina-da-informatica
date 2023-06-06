@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 @Entity
 public class Servico {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_servico")
+    @SequenceGenerator(name = "sequence_servico", sequenceName = "sequence_servico")
     private Long idServico;
     @Enumerated(EnumType.STRING)
     private TipoServico tipoServico;
