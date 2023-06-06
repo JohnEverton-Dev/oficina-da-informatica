@@ -5,11 +5,13 @@ import com.alvestech.oficinadainformatica.servico.domain.TipoServico;
 import lombok.Value;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Value
 public class ServicoResponse {
-    UUID idServico;
+    Long idServico;
     TipoServico tipoServico;
     BigDecimal valorServico;
 
@@ -17,5 +19,11 @@ public class ServicoResponse {
         this.idServico = servico.getIdServico();
         this.valorServico = servico.getValorServico();
         this.tipoServico = servico.getTipoServico();
+    }
+
+    public static List<ServicoResponse> converte(List<Servico> listServicos) {
+        return listServicos.stream()
+                .map(ServicoResponse::new)
+                .collect(Collectors.toList());
     }
 }

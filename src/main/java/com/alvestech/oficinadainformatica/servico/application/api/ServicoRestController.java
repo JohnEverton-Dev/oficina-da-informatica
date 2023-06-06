@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,10 +22,30 @@ public class ServicoRestController implements ServicoAPI {
         return servicoResponse;
     }
     @Override
-    public ServicoResponse findServicoById(UUID idServico) {
+    public ServicoResponse findServicoById(Long idServico) {
         log.info("[start] ServicoRestController - findServicoById");
         Servico servico = servicoService.findServicoById(idServico);
         log.info("[finish] ServicoRestController - findServicoById");
         return new ServicoResponse(servico);
+    }
+    @Override
+    public List<ServicoResponse> findAllServicos() {
+        log.info("[start] ServicoRestController - findAllServicos");
+        List<ServicoResponse> listServicos = servicoService.findAllServicos();
+        log.info("[finish] ServicoRestController - findAllServicos");
+        return listServicos;
+    }
+    @Override
+    public void deleteServico(Long idServico) {
+        log.info("[start] ServicoRestController - deleteServico");
+        servicoService.deleteServico(idServico);
+        log.info("[finish] ServicoRestController - deleteServico");
+    }
+
+    @Override
+    public void updateServico(Long idServico, ServicoRequest servicoRequest) {
+        log.info("[start] ServicoRestController - updateServico");
+        servicoService.updateServico(idServico, servicoRequest);
+        log.info("[finish] ServicoRestController - updateServico");
     }
 }

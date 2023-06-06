@@ -5,10 +5,10 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.List;
 
 @Tag(name = "Serviço", description = "Serviço APIs")
-@RequestMapping("/v1/servico")
+@RequestMapping("/v1/Servico")
 public interface ServicoAPI {
 
     @PostMapping
@@ -17,6 +17,17 @@ public interface ServicoAPI {
 
     @GetMapping(value = "/{idServico}")
     @ResponseStatus(code = HttpStatus.OK)
-    ServicoResponse findServicoById (@PathVariable UUID idServico);
+    ServicoResponse findServicoById (@PathVariable Long idServico);
 
+    @GetMapping("/findAllServicos")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<ServicoResponse> findAllServicos();
+
+    @DeleteMapping("/{idServico}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteServico (@PathVariable Long idServico);
+
+    @PatchMapping("/{idServico}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void updateServico (@PathVariable Long idServico, ServicoRequest servicoRequest);
 }

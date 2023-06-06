@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,13 +14,17 @@ import java.util.UUID;
 @Entity
 public class Servico {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID idServico;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long idServico;
     @Enumerated(EnumType.STRING)
     private TipoServico tipoServico;
     private BigDecimal valorServico;
 
     public Servico(ServicoRequest servicoRequest) {
+        this.tipoServico = servicoRequest.getTipoServico();
+        this.valorServico = servicoRequest.getValorServico();
+    }
+    public void updateServico(ServicoRequest servicoRequest) {
         this.tipoServico = servicoRequest.getTipoServico();
         this.valorServico = servicoRequest.getValorServico();
     }
