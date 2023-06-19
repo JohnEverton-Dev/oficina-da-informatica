@@ -2,6 +2,8 @@ package com.alvestech.oficinadainformatica.funcionario.domain;
 
 import com.alvestech.oficinadainformatica.funcionario.application.api.EditaFuncionarioRequest;
 import com.alvestech.oficinadainformatica.funcionario.application.api.FuncionarioRequest;
+import com.alvestech.oficinadainformatica.servico.domain.Servico;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +14,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -41,6 +44,10 @@ public class Funcionario {
     private Cargo cargo;
     private LocalDate dataAdmissao;
     private LocalDate dataDemissao;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @JsonIgnore
+    private List<Servico> servicos;
 
     public Funcionario(FuncionarioRequest funcionarioRequest) {
         this.nomeCompleto = funcionarioRequest.getNomeCompleto();
