@@ -6,11 +6,14 @@ import com.alvestech.oficinadainformatica.cliente.application.api.ClienteRespons
 import com.alvestech.oficinadainformatica.cliente.application.api.EditaClienteRequest;
 import com.alvestech.oficinadainformatica.cliente.application.repository.ClienteRepository;
 import com.alvestech.oficinadainformatica.cliente.domain.Cliente;
+import com.alvestech.oficinadainformatica.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -54,5 +57,13 @@ public class ClienteApplicationService implements ClienteService {
         cliente.update(editaClienteRequest);
         clienteRepository.saveCliente(cliente);
         log.info("[finish] ClienteApplicationService - updateCliente");
+    }
+    @Override
+    public ClienteResponse findByCpf(String cpf) {
+        log.info("[start] ClienteApplicationService - findByCpf");
+        Cliente cliente = clienteRepository.findByCpf(cpf)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,"Cliente não encontrado!"));
+        log.info("[finish] ClienteApplicationService - findByCpf");
+        return new ClienteResponse(cliente);
     }
 }

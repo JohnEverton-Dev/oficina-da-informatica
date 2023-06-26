@@ -14,4 +14,5 @@ public interface ClienteService {
     List<ClienteListResponse> findAllClientes();
     void deleteFuncionario(UUID idCliente);
     void updateCliente(UUID idCliente, EditaClienteRequest editaClienteRequest);
+    ClienteResponse findByCpf(String cpf);
 }
