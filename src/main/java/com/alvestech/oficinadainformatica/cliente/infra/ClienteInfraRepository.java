@@ -53,4 +53,12 @@ public class ClienteInfraRepository implements ClienteRepository {
         clienteSpringDataJPARepository.deleteById(idCliente);
         log.info("[finish] ClienteInfraRepository - deleteCliente");
     }
+
+    @Override
+    public Optional<Cliente> findByCpf(String cpf) {
+        log.info("[start] ClienteInfraRepository - findByCpf");
+        Optional<Cliente> cliente = clienteSpringDataJPARepository.findByCpf(cpf);
+        log.info("[finish] ClienteInfraRepository - findByCpf");
+        return cliente;
+    }
 }

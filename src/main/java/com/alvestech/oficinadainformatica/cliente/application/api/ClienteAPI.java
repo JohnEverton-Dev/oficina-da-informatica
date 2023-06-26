@@ -31,4 +31,8 @@ public interface ClienteAPI {
     @PatchMapping(value = "/update/{idCliente}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void updateCliente (@PathVariable UUID idCliente, @Valid @RequestBody EditaClienteRequest editaClienteRequest);
+
+    @GetMapping(value = "/cpf")
+    @ResponseStatus(code = HttpStatus.OK)
+    ClienteResponse findByCpf (@RequestParam String cpf);
 }

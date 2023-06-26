@@ -48,4 +48,11 @@ public class ClienteRestController implements ClienteAPI {
         log.info("[idCliente] {}", idCliente);
         log.info("[finish] ClienteRestController - updateCliente");
     }
+    @Override
+    public ClienteResponse findByCpf(String cpf) {
+        log.info("[start] ClienteRestController - findByCpf");
+        ClienteResponse clienteResponse = clienteService.findByCpf(cpf);
+        log.info("[finish] ClienteRestController - findByCpf");
+        return clienteResponse;
+    }
 }
