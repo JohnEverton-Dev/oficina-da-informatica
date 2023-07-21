@@ -20,9 +20,6 @@ public class OrcamentoResponse {
     LocalDate dataOrcamento;
     TipoServico tipoServico;
     TipoPagamento tipoPagamento;
-    BigDecimal valorEntrada;
-    int desconto;
-    int quantidadeParcelas;
     String observacao;
     BigDecimal valorFinal;
     Status status;
@@ -36,9 +33,6 @@ public class OrcamentoResponse {
         this.dataOrcamento = orcamento.getDataOrcamento();
         this.tipoServico = orcamento.getServico().getTipoServico();
         this.tipoPagamento = orcamento.getServico().getTipoPagamento();
-        this.valorEntrada = orcamento.getValorEntrada();
-        this.desconto = orcamento.getDesconto();
-        this.quantidadeParcelas = orcamento.getQuantidadeParcelas();
         this.observacao = orcamento.getObservacao();
         this.valorFinal = orcamento.getValorFinal();
         this.status = orcamento.getStatus();

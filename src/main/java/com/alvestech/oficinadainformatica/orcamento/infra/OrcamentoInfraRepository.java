@@ -32,13 +32,10 @@ public class OrcamentoInfraRepository implements OrcamentoRepository {
         log.info("[finish] OrcamentoInfraRepository - findOrcamentoById");
         return orcamento;
     }
-//    public Orcamento findByCpf(String cpf) {
-//        log.info("[inicia] OrcamentoInfraRepository - deleteById");
-//        Optional<Orcamento> optionalOrcamento = orcamentoSpringDataJPARepository.findByClienteCpf(cpf);
-//        Orcamento orcamento = optionalOrcamento
-//                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,
-//                        "Orçamento não encontrado!"));
-//        log.info("[finaliza] OrcamentoInfraRepository - deleteById");
-//        return orcamento;
-//    }
+
+    @Override
+    public void delete(Long idOrcamento) {
+        orcamentoSpringDataJPARepository.deleteById(idOrcamento);
+    }
+
 }
