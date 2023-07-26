@@ -4,6 +4,7 @@ import com.alvestech.oficinadainformatica.funcionario.application.repository.Fun
 import com.alvestech.oficinadainformatica.funcionario.domain.Funcionario;
 import com.alvestech.oficinadainformatica.orcamento.application.repository.OrcamentoRepository;
 import com.alvestech.oficinadainformatica.orcamento.domain.Orcamento;
+import com.alvestech.oficinadainformatica.ordemservico.application.api.OSUpdateRequest;
 import com.alvestech.oficinadainformatica.ordemservico.application.api.OrdemServicoRequest;
 import com.alvestech.oficinadainformatica.ordemservico.application.api.OrdemServicoResponse;
 import com.alvestech.oficinadainformatica.ordemservico.application.repository.OrdemServicoRepository;
@@ -29,9 +30,25 @@ public class OrdemServicoAplicattionService implements OrdemServicoService {
         Funcionario funcionario = funcionarioRepository.findFuncionarioById(ordemServicoRequest.getIdFuncionario());
         Orcamento orcamento = orcamentoRepository.findOrcamentoById(ordemServicoRequest.getIdOrcamento());
         Servico servico = servicoRepository.findServicoById(ordemServicoRequest.getIdServico());
-        OrdemServico ordemServico = ordemServicoRepository.saveOrdemServico(new OrdemServico(funcionario, orcamento, servico, ordemServicoRequest));
+        OrdemServico ordemServico = ordemServicoRepository.saveOrdemServico
+                (new OrdemServico(funcionario, orcamento, servico, ordemServicoRequest));
         orcamentoRepository.delete(ordemServicoRequest.getIdOrcamento());
         log.info("[finish] OrdemServicoAplicattionService - saveOrdemServico");
         return new OrdemServicoResponse(ordemServico);
+    }
+    @Override
+    public OrdemServicoResponse findOrdemServico(Long idOrdemServico) {
+        log.info("[start] OrdemServicoAplicattionService - findOrdemServico");
+        OrdemServico ordemServico = ordemServicoRepository.findOrdemServicoById(idOrdemServico);
+        log.info("[finish] OrdemServicoAplicattionService - findOrdemServico");
+        return new OrdemServicoResponse(ordemServico);
+    }
+    @Override
+    public void updateOrdemServico(Long idOrdemServico, OSUpdateRequest osUpdateRequest) {
+        log.info("[start] OrdemServicoAplicattionService - updateOrdemServico");
+        OrdemServico ordemServico = ordemServicoRepository.findOrdemServicoById(idOrdemServico);
+        ordemServico.update(osUpdateRequest);
+        ordemServicoRepository.saveOrdemServico(ordemServico);
+        log.info("[finish] OrdemServicoAplicattionService - updateOrdemServico");
     }
 }

@@ -58,4 +58,9 @@ public class OrdemServico {
         this.status = request.getStatus();
         this.descricaoServico = request.getDescricaoServico();
     }
+
+    public void update(OSUpdateRequest osUpdateRequest) {
+        this.status = osUpdateRequest.getStatus();
+        this.descricaoServico = osUpdateRequest.getDescricaoServico();
+    }
 }

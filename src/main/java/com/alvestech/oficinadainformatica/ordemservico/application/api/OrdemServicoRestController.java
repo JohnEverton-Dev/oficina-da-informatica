@@ -18,4 +18,18 @@ public class OrdemServicoRestController implements OrdemServicoAPI {
         log.info("[finish] OrdemServicoRestController - saveOrdemServico");
         return ordemServicoResponse;
     }
+    @Override
+    public OrdemServicoResponse findOrdemServicoById(Long idOrdemServico) {
+        log.info("[start] OrdemServicoRestController - findOrdemServicoById");
+        OrdemServicoResponse ordemServicoResponse = ordemServicoService.findOrdemServico(idOrdemServico);
+        log.info("[finish] OrdemServicoRestController - findOrdemServicoById");
+        return ordemServicoResponse;
+    }
+    @Override
+    public void updateOrdemServico(Long idOrdemServico, OSUpdateRequest osUpdateRequest) {
+        log.info("[start] OrdemServicoRestController - updateOrdemServico");
+        ordemServicoService.updateOrdemServico(idOrdemServico, osUpdateRequest);
+        log.info("[idOrdemServico] {}", idOrdemServico);
+        log.info("[finish] OrdemServicoRestController - updateOrdemServico");
+    }
 }

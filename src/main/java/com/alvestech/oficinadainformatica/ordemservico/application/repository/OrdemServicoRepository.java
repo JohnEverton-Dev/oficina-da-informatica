@@ -4,4 +4,5 @@ import com.alvestech.oficinadainformatica.ordemservico.domain.OrdemServico;
 
 public interface OrdemServicoRepository {
     OrdemServico saveOrdemServico(OrdemServico ordemServico);
+    OrdemServico findOrdemServicoById(Long idOrdemServico);
 }
