@@ -6,7 +6,9 @@ import com.alvestech.oficinadainformatica.servico.domain.TipoServico;
 import lombok.Value;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Value
 public class OrdemServicoResponse {
@@ -26,5 +28,11 @@ public class OrdemServicoResponse {
         this.status = ordemServico.getStatus();
         this.descricaoServico = ordemServico.getDescricaoServico();
         this.valorFinal = ordemServico.getValorFinal();
+    }
+
+    public static List<OrdemServicoResponse> converte(List<OrdemServico> ordemServicos) {
+        return ordemServicos.stream()
+                .map(OrdemServicoResponse::new)
+                .collect(Collectors.toList());
     }
 }

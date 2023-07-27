@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Log4j2
@@ -42,6 +44,13 @@ public class OrdemServicoAplicattionService implements OrdemServicoService {
         OrdemServico ordemServico = ordemServicoRepository.findOrdemServicoById(idOrdemServico);
         log.info("[finish] OrdemServicoAplicattionService - findOrdemServico");
         return new OrdemServicoResponse(ordemServico);
+    }
+    @Override
+    public List<OrdemServicoResponse> findAllOrdemServico() {
+        log.info("[start] OrdemServicoAplicattionService - findAllOrdemServico");
+        List<OrdemServico> ordemServicos = ordemServicoRepository.findAllOrdemServico();
+        log.info("[finish] OrdemServicoAplicattionService - findAllOrdemServico");
+        return OrdemServicoResponse.converte(ordemServicos);
     }
     @Override
     public void updateOrdemServico(Long idOrdemServico, OSUpdateRequest osUpdateRequest) {

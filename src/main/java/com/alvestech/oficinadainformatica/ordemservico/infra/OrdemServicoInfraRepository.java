@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -29,8 +30,14 @@ public class OrdemServicoInfraRepository implements OrdemServicoRepository {
         Optional<OrdemServico> optionalOrdemServico = ordemServicoSpringDataJPARepository.findById(idOrdemServico);
         OrdemServico ordemServico = optionalOrdemServico.orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST,
                 "Ordem de Serviço não encotrada!"));
-        log.info("[finish] Orde" +
-                "ServicoInfraRepository - findOrdemServicoById");
+        log.info("[finish] OrdemServicoInfraRepository - findOrdemServicoById");
         return ordemServico;
+    }
+    @Override
+    public List<OrdemServico> findAllOrdemServico() {
+        log.info("[start] OrdemServicoInfraRepository - findAllOrdemServico");
+        List<OrdemServico> allOrdemServicos = ordemServicoSpringDataJPARepository.findAll();
+        log.info("[finish] OrdemServicoInfraRepository - findAllOrdemServico");
+        return allOrdemServicos;
     }
 }

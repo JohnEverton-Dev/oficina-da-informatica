@@ -19,7 +19,7 @@ public interface ServicoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     ServicoResponse findServicoById (@PathVariable Long idServico);
 
-    @GetMapping("/findAllServicos")
+    @GetMapping("/allServicos")
     @ResponseStatus(code = HttpStatus.OK)
     List<ServicoResponse> findAllServicos();
 
@@ -27,7 +27,7 @@ public interface ServicoAPI {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteServico (@PathVariable Long idServico);
 
-    @PatchMapping("/{idServico}")
+    @PatchMapping("/update/{idServico}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void updateServico (@PathVariable Long idServico, ServicoRequest servicoRequest);
 }

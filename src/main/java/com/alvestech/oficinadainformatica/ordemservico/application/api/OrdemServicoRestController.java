@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @Log4j2
@@ -24,6 +26,13 @@ public class OrdemServicoRestController implements OrdemServicoAPI {
         OrdemServicoResponse ordemServicoResponse = ordemServicoService.findOrdemServico(idOrdemServico);
         log.info("[finish] OrdemServicoRestController - findOrdemServicoById");
         return ordemServicoResponse;
+    }
+    @Override
+    public List<OrdemServicoResponse> findAllOrdemServico() {
+        log.info("[start] OrdemServicoRestController - findAllOrdemServico");
+        List<OrdemServicoResponse> listOrdemServico = ordemServicoService.findAllOrdemServico();
+        log.info("[finish] OrdemServicoRestController - findAllOrdemServico");
+        return listOrdemServico;
     }
     @Override
     public void updateOrdemServico(Long idOrdemServico, OSUpdateRequest osUpdateRequest) {

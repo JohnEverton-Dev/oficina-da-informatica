@@ -5,6 +5,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Ordem Serviço", description = "Ordem Serviço APIs")
 @RequestMapping("/v1/OrdemServico")
 public interface OrdemServicoAPI {
@@ -16,6 +18,10 @@ public interface OrdemServicoAPI {
     @GetMapping(value = "/{idOrdemServico}")
     @ResponseStatus(code = HttpStatus.OK)
     OrdemServicoResponse findOrdemServicoById (@Valid Long idOrdemServico);
+
+    @GetMapping(value = "/allOrdemServico")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<OrdemServicoResponse> findAllOrdemServico();
 
     @PatchMapping(value = "/update/{idOrdemServico}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
