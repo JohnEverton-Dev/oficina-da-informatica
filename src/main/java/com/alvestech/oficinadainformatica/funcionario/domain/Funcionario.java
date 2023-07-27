@@ -2,6 +2,7 @@ package com.alvestech.oficinadainformatica.funcionario.domain;
 
 import com.alvestech.oficinadainformatica.funcionario.application.api.EditaFuncionarioRequest;
 import com.alvestech.oficinadainformatica.funcionario.application.api.FuncionarioRequest;
+import com.alvestech.oficinadainformatica.ordemservico.domain.OrdemServico;
 import com.alvestech.oficinadainformatica.servico.domain.Servico;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -48,6 +49,10 @@ public class Funcionario {
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
     @JsonIgnore
     private List<Servico> servicos;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "funcionario")
+    @JsonIgnore
+    private List<OrdemServico> ordemServicos;
 
     public Funcionario(FuncionarioRequest funcionarioRequest) {
         this.nomeCompleto = funcionarioRequest.getNomeCompleto();

@@ -23,15 +23,10 @@ public class Orcamento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idOrcamento;
     protected LocalDate dataOrcamento = LocalDate.now();
-    private BigDecimal valorEntrada;
-    private int desconto;
-    @Min(value = 1, message = "O valor mínimo é 1")
-    @Max(value = 12, message = "O valor máximo é 12")
-    private int quantidadeParcelas;
     private String observacao;
     private BigDecimal valorFinal;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.AGUARDANDO_ATENDIMENTO;
+    private Status status;
 
     @OneToOne
     @JsonIgnore
@@ -42,9 +37,6 @@ public class Orcamento {
     private Servico servico;
 
     public Orcamento(Cliente cliente, Servico servico, OrcamentoRequest orcamentoRequest) {
-        this.valorEntrada = orcamentoRequest.getValorEntrada();
-        this.desconto = orcamentoRequest.getDesconto();
-        this.quantidadeParcelas = orcamentoRequest.getQuantidadeParcelas();
         this.observacao = orcamentoRequest.getObservacao();
         this.valorFinal = orcamentoRequest.getValorFinal();
         this.status =  orcamentoRequest.getStatus();

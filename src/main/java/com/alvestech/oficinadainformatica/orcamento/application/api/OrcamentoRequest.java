@@ -29,14 +29,9 @@ public class OrcamentoRequest {
     TipoServico tipoServico;
     @Enumerated(EnumType.STRING)
     TipoPagamento tipoPagamento;
-    private BigDecimal valorEntrada;
-    private int desconto;
-    @Min(value = 1, message = "O valor mínimo é 1")
-    @Max(value = 12, message = "O valor máximo é 12")
-    private int quantidadeParcelas;
-    private String observacao;
-    private BigDecimal valorFinal;
+    String observacao;
+    BigDecimal valorFinal;
     @Enumerated(EnumType.STRING)
-    private Status status = Status.AGUARDANDO_ATENDIMENTO;
+    Status status;
 
 }
